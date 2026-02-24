@@ -50,15 +50,16 @@ function CreateTripModal({ onClose, onCreated }) {
   return (
     <div className="fixed inset-0 bg-black/40 z-50 flex items-end justify-center" onClick={onClose}>
       <div
-        className="bg-white w-full max-w-lg rounded-t-3xl max-h-[90vh] overflow-y-auto"
+        className="bg-white w-full max-w-lg rounded-t-3xl flex flex-col"
+        style={{ maxHeight: '90vh' }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between p-4 border-b sticky top-0 bg-white">
+        <div className="flex items-center justify-between p-4 border-b shrink-0">
           <h2 className="font-bold text-gray-900">Opret tur</h2>
           <button onClick={onClose} className="p-1 text-gray-400 hover:text-gray-600"><X size={20} /></button>
         </div>
 
-        <div className="p-4 flex flex-col gap-4">
+        <div className="overflow-y-auto flex-1 p-4 flex flex-col gap-4">
           <Input
             label="Titel"
             value={form.title}
