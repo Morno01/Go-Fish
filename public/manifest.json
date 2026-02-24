@@ -1,0 +1,39 @@
+{
+  "name": "Go-Fish – Find din fiskepartner",
+  "short_name": "Go-Fish",
+  "description": "Find fisketure, samkørsel og match med andre lystfiskere i Danmark",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1d4ed8",
+  "orientation": "portrait",
+  "categories": ["lifestyle", "sports"],
+  "lang": "da",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Find tur",
+      "url": "/trips",
+      "description": "Se alle fisketure"
+    },
+    {
+      "name": "Match",
+      "url": "/match",
+      "description": "Find fiskepartnere"
+    }
+  ]
+}
