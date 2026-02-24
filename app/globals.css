@@ -1,15 +1,10 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
   --foreground: #0f172a;
-  --primary: #1d4ed8;
-  --primary-dark: #1e3a8a;
-  --teal: #0d9488;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 body {
@@ -21,10 +16,6 @@ body {
 
 html {
   scroll-behavior: smooth;
-}
-
-body {
-  padding-bottom: env(safe-area-inset-bottom);
 }
 
 ::-webkit-scrollbar {
