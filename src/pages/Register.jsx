@@ -48,7 +48,13 @@ export default function Register() {
         regions: form.regions,
       })
     }
-    navigate('/dashboard')
+
+    // If session exists, email confirmation is disabled — go straight to dashboard
+    if (data.session) {
+      navigate('/dashboard')
+    } else {
+      setStep(4) // show "check your email" screen
+    }
     setLoading(false)
   }
 
@@ -59,11 +65,13 @@ export default function Register() {
           <Fish size={28} /> Go-Fish
         </div>
 
-        <div className="flex gap-2 mb-6">
-          {[1, 2, 3].map((n) => (
-            <div key={n} className={`flex-1 h-1.5 rounded-full ${n <= step ? 'bg-blue-600' : 'bg-gray-200'}`} />
-          ))}
-        </div>
+        {step < 4 && (
+          <div className="flex gap-2 mb-6">
+            {[1, 2, 3].map((n) => (
+              <div key={n} className={`flex-1 h-1.5 rounded-full ${n <= step ? 'bg-blue-600' : 'bg-gray-200'}`} />
+            ))}
+          </div>
+        )}
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
           {step === 1 && (
@@ -168,10 +176,27 @@ export default function Register() {
           )}
         </div>
 
-        <p className="text-center text-sm text-gray-500 mt-6">
-          Har du allerede en konto?{' '}
-          <Link to="/login" className="text-blue-600 font-medium hover:underline">Log ind</Link>
-        </p>
+        {step === 4 && (
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 text-center">
+            <div className="text-4xl mb-4">📧</div>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">Bekræft din e-mail</h2>
+            <p className="text-sm text-gray-600 mb-4">
+              Vi har sendt en bekræftelsesmail til <strong>{form.email}</strong>.<br />
+              Klik på linket i mailen for at aktivere din konto.
+            </p>
+            <p className="text-xs text-gray-400">Tjek også din spam-mappe.</p>
+            <Link to="/login" className="mt-4 inline-block text-sm text-blue-600 font-medium hover:underline">
+              Gå til log ind
+            </Link>
+          </div>
+        )}
+
+        {step < 4 && (
+          <p className="text-center text-sm text-gray-500 mt-6">
+            Har du allerede en konto?{' '}
+            <Link to="/login" className="text-blue-600 font-medium hover:underline">Log ind</Link>
+          </p>
+        )}
       </div>
     </div>
   )

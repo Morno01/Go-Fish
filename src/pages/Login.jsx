@@ -17,7 +17,11 @@ export default function Login() {
     setLoading(true)
     const { error: err } = await supabase.auth.signInWithPassword({ email, password })
     if (err) {
-      setError('Forkert e-mail eller adgangskode')
+      if (err.message.toLowerCase().includes('email not confirmed')) {
+        setError('Du skal bekræfte din e-mail først. Tjek din indbakke (og spam-mappen).')
+      } else {
+        setError('Forkert e-mail eller adgangskode')
+      }
     } else {
       navigate('/dashboard')
     }
