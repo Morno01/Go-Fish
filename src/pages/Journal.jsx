@@ -47,7 +47,7 @@ function CreateJournalModal({ onClose, onCreated }) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/40 z-50 flex items-end justify-center" onClick={onClose}>
+    <div className="fixed inset-0 bg-black/40 z-[60] flex items-end justify-center" onClick={onClose}>
       <div
         className="bg-white w-full max-w-lg rounded-t-3xl flex flex-col"
         style={{ maxHeight: '90vh' }}
