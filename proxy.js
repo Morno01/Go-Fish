@@ -4,6 +4,11 @@ import { NextResponse } from 'next/server'
 export async function proxy(request) {
   let supabaseResponse = NextResponse.next({ request })
 
+  // Skip auth if Supabase env vars are not configured (local dev without .env)
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    return supabaseResponse
+  }
+
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
